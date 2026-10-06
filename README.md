@@ -29,3 +29,10 @@ O token nunca vai para o navegador nem para o git (`.env` está no `.gitignore`)
 - Resultado = lead de formulário (conjunto de LEAD_GENERATION) ou conversa iniciada no WhatsApp.
 - Sem `DASH_SENHA`, a CDN do Vercel também guarda a resposta por 30 min. Com senha, o cache é só o da
   função, que zera quando ela hiberna; a primeira abertura depois disso consulta a Meta de novo.
+
+## Kommo
+
+Com `KOMMO_TOKEN` configurado, `lib/kommo.js` soma leads e qualificados do Kommo por cidade (somente leitura,
+só números agregados). Regra: card criado no funil de qualificação, Fonte do Lead = Meta Ads, Empreendimento =
+Savia; qualificado = status 142 nesse funil. A cidade vem do `utm_term`, que traz o nome do conjunto.
+Sem o token, ou se o Kommo falhar, o dashboard segue só com a Meta e mostra o aviso no lugar dos números.
