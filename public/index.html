@@ -1,0 +1,166 @@
+<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow">
+<title>Savia · Cidades</title>
+<style>
+:root{--page:#F3F5F4;--surface:#fff;--ink:#1A1D1F;--ink2:#4c5356;--muted:#87908d;--line:#e2e7e4;--track:#eef1ef;
+--accent:#00BE23;--whats:#00a01e;--form:#2a78d6;--sel-bg:#1A1D1F;--sel-fg:#fff;--rowsel:#eaf8ec;--good-bg:#e3f6e6;--good-ink:#0a6b1c}
+:root[data-theme=dark]{color-scheme:dark;--page:#0E1218;--surface:#161C25;--ink:#F2F6FA;--ink2:#9AA8B8;--muted:#647282;--line:#2C3644;--track:#1E2631;
+--accent:#C8FF3C;--whats:#8DC414;--form:#6C8BFF;--sel-bg:#C8FF3C;--sel-fg:#0E1218;--rowsel:#1f2a1c;--good-bg:#22301a;--good-ink:#C8FF3C}
+*{box-sizing:border-box}body{margin:0;background:var(--page);color:var(--ink);font:14px/1.45 "Avenir Next","Nunito Sans","Segoe UI",system-ui,sans-serif}
+.wrap{max-width:1440px;margin:0 auto;padding:36px 48px 40px;display:flex;flex-direction:column;gap:22px}
+.mono{font:600 10.5px/1 Menlo,Consolas,monospace;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
+h1{font:700 40px/1.02 "Avenir Next Condensed","Archivo Narrow","Arial Narrow",sans-serif;margin:8px 0 0;letter-spacing:-.01em}
+h2{font:700 17px/1.2 "Avenir Next",sans-serif;margin:0}
+.top{display:flex;justify-content:space-between;align-items:flex-end;gap:24px}
+.live{display:flex;align-items:center;gap:10px;background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:8px 14px;font-size:12.5px;color:var(--ink2);white-space:nowrap}
+.live b{color:var(--ink)}.dot{width:8px;height:8px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 4px color-mix(in srgb,var(--accent) 25%,transparent)}
+.filters{display:flex;flex-wrap:wrap;gap:12px 28px;align-items:center}
+.fg{display:flex;align-items:center;gap:10px}.fg>span{font-size:12px;color:var(--muted)}
+.seg{display:flex;background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:3px;gap:2px}
+.seg button{font:inherit;font-size:13px;border:0;background:transparent;color:var(--ink2);padding:6px 12px;border-radius:6px;cursor:pointer}
+.seg button.on{background:var(--sel-bg);color:var(--sel-fg);font-weight:600}
+.sel{font:inherit;font-size:13px;font-weight:600;background:var(--surface);color:var(--ink);border:1px solid var(--line);border-radius:8px;padding:8px 34px 8px 12px;appearance:none;-webkit-appearance:none;background-image:linear-gradient(45deg,transparent 50%,var(--ink2) 50%),linear-gradient(135deg,var(--ink2) 50%,transparent 50%);background-position:calc(100% - 17px) 55%,calc(100% - 12px) 55%;background-size:5px 5px;background-repeat:no-repeat}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:22px 24px}
+.tiles{display:grid;grid-template-columns:repeat(6,1fr);gap:14px}
+.tile{padding:18px 20px}.tile .l{font-size:13px;color:var(--ink2)}.tile .v{font:700 30px/1.15 "Avenir Next Condensed","Archivo Narrow","Arial Narrow",sans-serif;margin-top:6px}.tile .s{font-size:12px;color:var(--muted);margin-top:4px}
+.two>*{min-width:0}.box td,.box th{padding:9px 6px}.two{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.ch{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:4px}.sub{font-size:12.5px;color:var(--muted);margin-bottom:14px}
+.leg{display:flex;gap:16px;font-size:12.5px;color:var(--ink2)}.leg i,.k{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:6px;vertical-align:-1px}
+.hb{display:grid;grid-template-columns:150px 1fr;align-items:center;gap:0 12px;row-gap:9px;font-size:13px}
+.hb .n{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:var(--ink)}.hb .n.on{font-weight:700}
+.hb .b{display:flex;align-items:center;gap:2px;height:16px}.hb .b span{height:16px;display:block}.hb .b span:last-of-type{border-radius:0 4px 4px 0}
+.hb .b em{font-style:normal;font-size:12px;color:var(--ink2);margin-left:6px;font-variant-numeric:tabular-nums;white-space:nowrap}
+table{border-collapse:collapse;width:100%;font-size:13px}th{font:600 10px/1 Menlo,monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);text-align:left;padding:10px 10px;border-bottom:1px solid var(--line);white-space:nowrap}
+td{padding:10px 10px;border-bottom:1px solid var(--line)}tr:last-child td{border-bottom:0}.r{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+tr.on td{background:var(--rowsel)}tr.on td:first-child{box-shadow:inset 3px 0 0 var(--accent);font-weight:700}tr.ref td{color:var(--ink2);border-top:1px solid var(--line)}
+tbody tr.c{cursor:pointer}.tag{font:600 10px/1 Menlo,monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);border:1px solid var(--line);border-radius:4px;padding:3px 6px;margin-left:8px}
+.chip{font-size:11.5px;font-weight:600;background:var(--good-bg);color:var(--good-ink);border-radius:999px;padding:3px 9px}
+.dh{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-bottom:18px}.dh .lft{display:flex;align-items:center;gap:14px}
+.nav{display:flex;gap:6px}.nav button{font:inherit;width:34px;height:34px;border-radius:8px;border:1px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer}
+.mt{display:grid;grid-template-columns:repeat(5,1fr);gap:0;border:1px solid var(--line);border-radius:10px;margin-bottom:18px}.mt>div{padding:14px 18px;border-right:1px solid var(--line)}.mt>div:last-child{border:0}
+.mt .l{font-size:12.5px;color:var(--ink2)}.mt .v{font:700 24px/1.2 "Avenir Next Condensed","Archivo Narrow","Arial Narrow",sans-serif}.mt .s{font-size:11.5px;color:var(--muted)}
+.cols{display:flex;align-items:flex-end;gap:18px;height:150px;border-bottom:1px solid var(--line);padding:0 8px}
+.cols .c{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%;gap:2px}
+.cols .c b{font-size:12px;font-weight:600;color:var(--ink2);margin-bottom:3px;font-variant-numeric:tabular-nums}.cols .c span{width:24px;display:block}.cols .c span:first-of-type{border-radius:4px 4px 0 0}
+.xl{display:flex;gap:18px;padding:6px 8px 0;font-size:11.5px;color:var(--muted)}.xl div{flex:1;text-align:center}
+.box{border:1px solid var(--line);border-radius:10px;padding:16px 18px}.box h3{font:600 13.5px/1.2 "Avenir Next",sans-serif;margin:0 0 2px}
+.foot{display:flex;justify-content:space-between;gap:24px;border-top:1px solid var(--line);padding-top:14px}.note{font-size:12px;color:var(--muted);max-width:980px}
+
+.hb .b,.cols .c span,[data-tip]{cursor:default}
+.tip{position:fixed;pointer-events:none;background:var(--ink);color:var(--surface);font-size:12px;line-height:1.45;padding:8px 10px;border-radius:6px;max-width:260px;z-index:10;box-shadow:0 4px 16px rgba(0,0,0,.2);display:none}
+.tip b{display:block;font-size:12.5px}
+.live button{font:inherit;font-size:12px;border:1px solid var(--line);background:transparent;color:var(--ink);border-radius:999px;padding:3px 10px;cursor:pointer}
+.dot.off{background:var(--muted);box-shadow:none}
+.dates{display:flex;gap:6px;align-items:center}.dates input,.login input{font:inherit;font-size:13px;background:var(--surface);color:var(--ink);border:1px solid var(--line);border-radius:8px;padding:6px 8px}
+.msg{padding:48px 24px;text-align:center;color:var(--ink2)}.msg b{display:block;color:var(--ink);font-size:16px;margin-bottom:6px}
+.login{display:flex;gap:8px;justify-content:center;margin-top:14px}.login button,.dates button{font:inherit;font-size:13px;font-weight:600;border:0;border-radius:8px;padding:7px 14px;background:var(--sel-bg);color:var(--sel-fg);cursor:pointer}
+.busy{opacity:.55;transition:opacity .15s}
+.scroll{overflow-x:auto}
+button:focus-visible,select:focus-visible,input:focus-visible,tr.c:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+@media (max-width:1100px){.tiles{grid-template-columns:repeat(3,1fr)}.two{grid-template-columns:1fr}.mt{grid-template-columns:repeat(2,1fr)}.mt>div{border-right:0;border-bottom:1px solid var(--line)}.top{flex-direction:column;align-items:flex-start}.card table{min-width:760px}.box table{min-width:520px}}
+@media (max-width:640px){.wrap{padding:20px 16px 32px}.tiles{grid-template-columns:repeat(2,1fr)}h1{font-size:30px}.hb{grid-template-columns:110px 1fr}.live{white-space:normal;border-radius:14px}}
+.tiles>*,.two>*,.filters>*{min-width:0}.seg,.fg,.ch,.leg{flex-wrap:wrap}.ch{gap:4px 12px}.seg button{white-space:nowrap}body{overflow-x:hidden}
+</style></head><body><div class="wrap" id="app"></div><div class="tip" id="tip"></div>
+<script>
+const $=s=>document.querySelector(s);
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const guarda={get:k=>{try{return localStorage.getItem(k)}catch(e){return null}},set:(k,v)=>{try{localStorage.setItem(k,v)}catch(e){}}};
+const E={periodo:"inicio",since:"",until:"",camp:"todas",cidade:null,tema:guarda.get("tema")||"dark",D:null,erro:null,login:false,carregando:false,senha:(()=>{try{return sessionStorage.getItem("senha")||""}catch(e){return ""}})()};
+document.documentElement.dataset.theme=E.tema;
+const R=v=>"R$ "+v.toLocaleString("pt-BR",{minimumFractionDigits:2,maximumFractionDigits:2}),N=v=>Math.round(v).toLocaleString("pt-BR"),
+P=v=>v.toLocaleString("pt-BR",{minimumFractionDigits:2,maximumFractionDigits:2})+"%",P1=v=>v.toLocaleString("pt-BR",{minimumFractionDigits:1,maximumFractionDigits:1})+"%",
+dm=d=>d.slice(8)+"/"+d.slice(5,7);
+const soma=rs=>rs.reduce((a,r)=>(a.inv+=r.inv,a.imp+=r.imp,a.cli+=r.cli,a.leads+=r.leads,a.conv+=r.conv,a.invF+=r.tipo=="form"?r.inv:0,a.invW+=r.tipo=="whats"?r.inv:0,a),{inv:0,imp:0,cli:0,leads:0,conv:0,invF:0,invW:0});
+const res=s=>s.leads+s.conv,cpr=s=>res(s)?R(s.inv/res(s)):"—",ctr=s=>s.imp?P(s.cli/s.imp*100):"—",cpm=s=>s.imp?R(s.inv/s.imp*1000):"—";
+const TIPO={form:"Formulário",whats:"WhatsApp"},STATUS={ACTIVE:"Ativo",PAUSED:"Pausado",CAMPAIGN_PAUSED:"Campanha pausada",ADSET_PAUSED:"Pausado",IN_PROCESS:"Em análise",WITH_ISSUES:"Com problema"};
+const tipDe=(nome,w,f,fmt)=>esc(`<b>${nome}</b>WhatsApp: ${fmt(w)}<br>Formulário: ${fmt(f)}<br>Total: ${fmt(w+f)}`);
+
+async function carregar(silencioso){
+  E.carregando=true;if(!silencioso)render();
+  try{
+    const q=E.periodo==="custom"?`since=${E.since}&until=${E.until}`:`periodo=${E.periodo}`;
+    const r=await fetch("/api/dados?"+q,{headers:E.senha?{"x-dash-senha":E.senha}:{}});
+    const j=await r.json();
+    if(r.status===401){E.login=true;E.erro=E.senha?"Senha incorreta.":null;E.senha=""}
+    else if(!r.ok){E.erro=j.erro||"Não foi possível carregar os dados."}
+    else{E.D=j;E.erro=null;E.login=false;try{sessionStorage.setItem("senha",E.senha)}catch(e){}}
+  }catch(e){E.erro="Sem conexão com o servidor."}
+  E.carregando=false;render();
+}
+
+function barras(cids,get,fmt){
+  const mx=Math.max(1e-9,...cids.map(x=>get(x.s).reduce((a,b)=>a+b,0)));
+  return `<div class="hb">`+cids.map(x=>{const[w,f]=get(x.s);return `<div class="n ${x.c===E.cidade?"on":""}">${esc(x.c)}</div><div class="b" data-tip="${tipDe(x.c,w,f,fmt)}">${w?`<span style="width:${w/mx*76}%;background:var(--whats)"></span>`:""}${f?`<span style="width:${f/mx*76}%;background:var(--form)"></span>`:""}<em>${fmt(w+f)}</em></div>`}).join("")+`</div>`;
+}
+function colunas(dias,get,fmt,hoje){
+  const mx=Math.max(1e-9,...dias.map(d=>get(d.s).reduce((a,b)=>a+b,0))),muitos=dias.length>10,passo=Math.ceil(dias.length/10),gap=muitos?4:18,larg=muitos?"70%":"24px";
+  return `<div class="cols" style="gap:${gap}px">`+dias.map(d=>{const[w,f]=get(d.s);return `<div class="c" data-tip="${tipDe(dm(d.d),w,f,fmt)}">${muitos?"":`<b>${fmt(w+f)}</b>`}${f?`<span style="width:${larg};height:${f/mx*110}px;background:var(--form)"></span>`:""}${w?`<span style="width:${larg};height:${w/mx*110}px;background:var(--whats);${f?"border-radius:0":""}"></span>`:""}</div>`}).join("")+`</div><div class="xl" style="gap:${gap}px">`+dias.map((d,i)=>`<div>${i%passo?"":dm(d.d)+(d.d===hoje&&!muitos?" · hoje":"")}</div>`).join("")+`</div>`;
+}
+const seg=(nome,ops,atual)=>`<div class="seg" role="group">${ops.map(([k,t])=>`<button data-${nome}="${k}" class="${k===atual?"on":""}" aria-pressed="${k===atual}">${t}</button>`).join("")}</div>`;
+
+function render(){
+  const D=E.D,app=$("#app");
+  const hora=D?new Date(D.atualizado).toLocaleString("pt-BR",{day:"2-digit",month:"2-digit",hour:"2-digit",minute:"2-digit"}).replace(",", " às"):"";
+  const topo=`<div class="top"><div><div class="mono">Sales Check · Grupo Sinop · Meta Ads</div><h1>Savia · desempenho por cidade</h1></div>
+  <div class="live"><span class="dot ${E.erro||!D?"off":""}"></span>${D?`<b>Ao vivo</b> atualizado ${hora} · renova a cada ${D.ttl_min} min`:"Carregando…"} <button id="atualizar">Atualizar</button></div></div>`;
+  if(E.login){app.innerHTML=topo+`<div class="card msg"><b>Acesso restrito</b>Digite a senha do dashboard.${E.erro?`<div style="margin-top:8px">${esc(E.erro)}</div>`:""}<form class="login" id="login"><input type="password" id="senha" placeholder="Senha" autofocus aria-label="Senha"><button>Entrar</button></form></div>`;
+    $("#login").onsubmit=e=>{e.preventDefault();E.senha=$("#senha").value;E.login=false;carregar()};$("#atualizar").onclick=()=>carregar();return}
+  const filtros=`<div class="filters"><div class="fg"><span>Período</span>${seg("p",[["hoje","Hoje"],["ontem","Ontem"],["7d","7 dias"],["30d","30 dias"],["inicio","Desde "+(D?dm(D.inicio):"o início")],["custom","Personalizado"]],E.periodo)}
+  ${E.periodo==="custom"?`<form class="dates" id="datas"><input type="date" id="d1" value="${E.since}" max="${D?D.hoje:""}" aria-label="De"><span>a</span><input type="date" id="d2" value="${E.until}" max="${D?D.hoje:""}" aria-label="Até"><button>Aplicar</button></form>`:""}</div>
+  <div class="fg"><span>Campanha</span>${seg("c",[["todas","Todas"],["form","Formulário"],["whats","WhatsApp"]],E.camp)}</div>
+  <div class="fg"><span>Tema</span>${seg("t",[["light","Claro"],["dark","Escuro"]],E.tema)}</div></div>`;
+  let corpo;
+  if(!D)corpo=`<div class="card msg">${E.erro?`<b>Não deu para carregar</b>${esc(E.erro)}`:"<b>Carregando dados da Meta…</b>A primeira leitura leva alguns segundos."}</div>`;
+  else corpo=(E.erro?`<div class="card" style="padding:12px 18px;color:var(--ink2)">Última atualização falhou: ${esc(E.erro)} Mostrando a leitura anterior.</div>`:"")+painel(D);
+  app.innerHTML=topo+filtros+`<div id="corpo" class="${E.carregando&&D?"busy":""}" style="display:flex;flex-direction:column;gap:22px">${corpo}</div>
+  <div class="foot"><div class="note">Fonte: Meta Marketing API, conta Gran - Produtos, campanhas SAV_CP01 (formulário) e SAV_CP02 (WhatsApp). Resultado = lead de formulário ou conversa iniciada no WhatsApp. Os totais somam só os conjuntos por cidade; os conjuntos amplos aparecem como referência. A Meta consolida os números em 24 a 72 h, então os últimos dias ainda sobem.</div><div class="mono">Savia · cidades · Sales Check</div></div>`;
+  ligar();
+}
+
+function painel(D){
+  const f=r=>E.camp==="todas"||r.tipo===E.camp;
+  const cj=D.conjuntos.filter(f),di=D.diario.filter(f),an=D.anuncios.filter(f);
+  const cids=[...new Set(cj.map(r=>r.cidade))].filter(c=>c!==D.amplo).map(c=>({c,s:soma(cj.filter(r=>r.cidade===c))})).sort((a,b)=>b.s.inv-a.s.inv||a.c.localeCompare(b.c));
+  if(!cids.length)return `<div class="card msg"><b>Nenhum conjunto por cidade neste filtro</b>Troque a campanha ou o período.</div>`;
+  if(!cids.some(c=>c.c===E.cidade))E.cidade=cids[0].c;
+  const tot=soma(cj.filter(r=>r.cidade!==D.amplo)),amp=cj.filter(r=>r.cidade===D.amplo),nSets=cj.filter(r=>r.cidade!==D.amplo).length;
+  const x=cids.find(c=>c.c===E.cidade),sets=cj.filter(r=>r.cidade===E.cidade),cad=an.filter(r=>r.cidade===E.cidade).sort((a,b)=>b.inv-a.inv);
+  const dias=D.dias.map(d=>({d,s:soma(di.filter(r=>r.cidade===E.cidade&&r.dia===d))}));
+  const leg=E.camp==="todas"?`<div class="leg"><span><i style="background:var(--whats)"></i>WhatsApp (CP02)</span><span><i style="background:var(--form)"></i>Formulário (CP01)</span></div>`:"";
+  const pct=s=>tot.inv?P1(s.inv/tot.inv*100):"—";
+  const linha=(n,s,cls,extra,p)=>`<tr class="${cls}" ${cls.startsWith("c")?`data-cid="${esc(n)}" tabindex="0"`:""}><td>${esc(n)}${extra||""}</td><td class="r">${R(s.inv)}</td><td class="r">${p}</td><td class="r">${N(s.imp)}</td><td class="r">${N(s.cli)}</td><td class="r">${ctr(s)}</td><td class="r">${cpm(s)}</td><td class="r">${N(s.leads)}</td><td class="r">${N(s.conv)}</td><td class="r">${cpr(s)}</td></tr>`;
+  const sub=s=>E.camp==="form"?`${N(s.leads)} leads de formulário`:E.camp==="whats"?`${N(s.conv)} conversas no WhatsApp`:`${N(s.conv)} conversas · ${N(s.leads)} leads de formulário`;
+  return `
+<div class="tiles">${[["Investido",R(tot.inv),`${cids.length} cidades · ${nSets} conjuntos`],["Resultados",N(res(tot)),sub(tot)],["Custo por resultado",cpr(tot),"investido ÷ resultados"],["Impressões",N(tot.imp),`${N(tot.cli)} cliques no link`],["CTR de link",ctr(tot),"cliques ÷ impressões"],["CPM",cpm(tot),"custo por mil impressões"]].map(t=>`<div class="card tile"><div class="l">${t[0]}</div><div class="v">${t[1]}</div><div class="s">${t[2]}</div></div>`).join("")}</div>
+<div class="two"><div class="card"><div class="ch"><h2>Investimento por cidade</h2>${leg}</div><div class="sub">Ordenado pelo maior investimento no período</div>${barras(cids,s=>[s.invW,s.invF],R)}</div>
+<div class="card"><div class="ch"><h2>Resultados por cidade</h2>${leg}</div><div class="sub">Conversas iniciadas no WhatsApp + leads de formulário, na mesma ordem</div>${barras(cids,s=>[s.conv,s.leads],N)}</div></div>
+<div class="card"><div class="ch"><h2>Todas as cidades</h2><span class="sub" style="margin:0">Clique numa linha para abrir o detalhe</span></div>
+<div class="scroll"><table><thead><tr><th>Cidade</th><th class="r">Investido</th><th class="r">% da verba</th><th class="r">Impressões</th><th class="r">Cliques</th><th class="r">CTR</th><th class="r">CPM</th><th class="r">Leads form.</th><th class="r">Conversas</th><th class="r">Custo / resultado</th></tr></thead>
+<tbody>${cids.map(c=>linha(c.c,c.s,"c"+(c.c===E.cidade?" on":""),"",pct(c.s))).join("")}${amp.length?linha(D.amplo,soma(amp),"ref",'<span class="tag">conjuntos amplos · referência</span>',"—"):""}</tbody></table></div></div>
+<div class="card" id="detalhe"><div class="dh"><div class="lft"><div><div class="mono" style="margin-bottom:8px">Detalhe da cidade</div><select class="sel" id="sel" aria-label="Cidade">${cids.map(c=>`<option ${c.c===E.cidade?"selected":""}>${esc(c.c)}</option>`).join("")}</select></div></div><div class="nav"><button id="pv" aria-label="Cidade anterior">‹</button><button id="nx" aria-label="Próxima cidade">›</button></div></div>
+<div class="mt">${[["Investido",R(x.s.inv),pct(x.s)+" da verba das cidades"],["Resultados",N(res(x.s)),sub(x.s)],["Custo por resultado",cpr(x.s),"média das cidades "+cpr(tot)],["CTR de link",ctr(x.s),"média das cidades "+ctr(tot)],["CPM",cpm(x.s),"média das cidades "+cpm(tot)]].map(t=>`<div><div class="l">${t[0]}</div><div class="v">${t[1]}</div><div class="s">${t[2]}</div></div>`).join("")}</div>
+<div class="two" style="margin-bottom:18px"><div class="box"><div class="ch"><h3>Investimento por dia</h3>${leg}</div><div class="sub">R$ por dia nos conjuntos da cidade</div>${colunas(dias,s=>[s.invW,s.invF],v=>R(v).replace("R$ ",""),D.hoje)}</div>
+<div class="box"><div class="ch"><h3>Resultados por dia</h3></div><div class="sub">Conversas + leads de formulário por dia</div>${colunas(dias,s=>[s.conv,s.leads],N,D.hoje)}</div></div>
+<div class="two"><div class="box"><h3>Conjuntos</h3><div class="sub">Alcance e frequência valem por conjunto, não somam entre eles</div><div class="scroll"><table><thead><tr><th>Conjunto</th><th class="r">Investido</th><th class="r">Alcance</th><th class="r">Freq.</th><th class="r">CTR</th><th class="r">Result.</th><th class="r">Custo</th></tr></thead><tbody>${sets.map(r=>{const s=soma([r]);return `<tr><td><span class="k" style="background:var(--${r.tipo})"></span>${TIPO[r.tipo]} <span class="${r.status==="ACTIVE"?"chip":"tag"}">${STATUS[r.status]||esc(r.status)}</span><div style="font-size:11px;color:var(--muted);margin-top:3px;word-break:break-all">${esc(r.conjunto)}</div></td><td class="r">${R(r.inv)}</td><td class="r">${N(r.alc)}</td><td class="r">${r.freq?r.freq.toLocaleString("pt-BR",{minimumFractionDigits:2,maximumFractionDigits:2}):"—"}</td><td class="r">${ctr(s)}</td><td class="r">${N(res(s))}</td><td class="r">${cpr(s)}</td></tr>`}).join("")}</tbody></table></div></div>
+<div class="box"><h3>Anúncios</h3><div class="sub">Criativos com entrega nesta cidade, do maior investimento ao menor</div><div class="scroll"><table><thead><tr><th>Anúncio</th><th class="r">Investido</th><th class="r">Impr.</th><th class="r">CTR</th><th class="r">Result.</th><th class="r">Custo</th></tr></thead><tbody>${cad.length?cad.map(r=>{const s=soma([r]);return `<tr><td><div style="display:flex;gap:2px;align-items:baseline" title="${TIPO[r.tipo]}"><span class="k" style="background:var(--${r.tipo});flex:none"></span><span style="word-break:break-word">${esc(r.anuncio)}</span></div></td><td class="r">${R(r.inv)}</td><td class="r">${N(r.imp)}</td><td class="r">${ctr(s)}</td><td class="r">${N(res(s))}</td><td class="r">${cpr(s)}</td></tr>`}).join(""):`<tr><td colspan="6" style="color:var(--muted)">Sem entrega no período.</td></tr>`}</tbody></table></div></div></div></div>`;
+}
+
+function ligar(){
+  const D=E.D;
+  $("#atualizar").onclick=()=>carregar();
+  document.querySelectorAll("[data-p]").forEach(b=>b.onclick=()=>{E.periodo=b.dataset.p;if(E.periodo==="custom"){if(!E.since&&D){E.since=D.periodo.since;E.until=D.periodo.until}render()}else carregar()});
+  document.querySelectorAll("[data-c]").forEach(b=>b.onclick=()=>{E.camp=b.dataset.c;render()});
+  document.querySelectorAll("[data-t]").forEach(b=>b.onclick=()=>{E.tema=b.dataset.t;document.documentElement.dataset.theme=E.tema;guarda.set("tema",E.tema);render()});
+  const fd=$("#datas");if(fd)fd.onsubmit=e=>{e.preventDefault();E.since=$("#d1").value;E.until=$("#d2").value;if(E.since&&E.until)carregar()};
+  const ir=c=>{E.cidade=c;render()};
+  document.querySelectorAll("tr.c").forEach(t=>{t.onclick=()=>ir(t.dataset.cid);t.onkeydown=e=>{if(e.key==="Enter")ir(t.dataset.cid)}});
+  const sel=$("#sel");if(sel){sel.onchange=e=>ir(e.target.value);const ops=[...sel.options].map(o=>o.value),i=ops.indexOf(E.cidade);
+    $("#pv").onclick=()=>ir(ops[(i-1+ops.length)%ops.length]);$("#nx").onclick=()=>ir(ops[(i+1)%ops.length])}
+}
+const tip=$("#tip");
+document.addEventListener("mousemove",e=>{const t=e.target.closest&&e.target.closest("[data-tip]");if(!t){tip.style.display="none";return}
+  tip.innerHTML=t.dataset.tip;tip.style.display="block";const w=tip.offsetWidth,h=tip.offsetHeight;
+  tip.style.left=Math.min(innerWidth-w-8,e.clientX+14)+"px";tip.style.top=(e.clientY+h+24>innerHeight?e.clientY-h-12:e.clientY+16)+"px"});
+setInterval(()=>{if(!document.hidden&&!E.login)carregar(true)},30*60*1000);
+document.addEventListener("visibilitychange",()=>{if(!document.hidden&&E.D&&Date.now()-new Date(E.D.atualizado)>30*60*1000)carregar(true)});
+carregar();
+</script></body></html>
