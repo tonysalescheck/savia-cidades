@@ -2,9 +2,9 @@
 <title>Savia · Cidades</title>
 <style>
 :root{--page:#F3F5F4;--surface:#fff;--ink:#1A1D1F;--ink2:#4c5356;--muted:#87908d;--line:#e2e7e4;--track:#eef1ef;
---accent:#00BE23;--whats:#00a01e;--form:#2a78d6;--sel-bg:#1A1D1F;--sel-fg:#fff;--rowsel:#eaf8ec;--good-bg:#e3f6e6;--good-ink:#0a6b1c}
+--accent:#00BE23;--tof:#2a78d6;--mof:#e08a00;--bof:#00a01e;--sel-bg:#1A1D1F;--sel-fg:#fff;--rowsel:#eaf8ec;--good-bg:#e3f6e6;--good-ink:#0a6b1c}
 :root[data-theme=dark]{color-scheme:dark;--page:#0E1218;--surface:#161C25;--ink:#F2F6FA;--ink2:#9AA8B8;--muted:#647282;--line:#2C3644;--track:#1E2631;
---accent:#C8FF3C;--whats:#8DC414;--form:#6C8BFF;--sel-bg:#C8FF3C;--sel-fg:#0E1218;--rowsel:#1f2a1c;--good-bg:#22301a;--good-ink:#C8FF3C}
+--accent:#C8FF3C;--tof:#6C8BFF;--mof:#FFB454;--bof:#8DC414;--sel-bg:#C8FF3C;--sel-fg:#0E1218;--rowsel:#1f2a1c;--good-bg:#22301a;--good-ink:#C8FF3C}
 *{box-sizing:border-box}body{margin:0;background:var(--page);color:var(--ink);font:14px/1.45 "Avenir Next","Nunito Sans","Segoe UI",system-ui,sans-serif}
 .wrap{max-width:1440px;margin:0 auto;padding:36px 48px 40px;display:flex;flex-direction:column;gap:22px}
 .mono{font:600 10.5px/1 Menlo,Consolas,monospace;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
@@ -34,6 +34,7 @@ td{padding:10px 10px;border-bottom:1px solid var(--line)}tr:last-child td{border
 tr.on td{background:var(--rowsel)}tr.on td:first-child{box-shadow:inset 3px 0 0 var(--accent);font-weight:700}tr.ref td{color:var(--ink2);border-top:1px solid var(--line)}
 tbody tr.c{cursor:pointer}.tag{font:600 10px/1 Menlo,monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);border:1px solid var(--line);border-radius:4px;padding:3px 6px;margin-left:8px}
 .chip{font-size:11.5px;font-weight:600;background:var(--good-bg);color:var(--good-ink);border-radius:999px;padding:3px 9px}
+.et{font:600 10px/1 Menlo,monospace;letter-spacing:.08em;text-transform:uppercase;color:#fff;border-radius:4px;padding:3px 6px;white-space:nowrap}
 .dh{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-bottom:18px}.dh .lft{display:flex;align-items:center;gap:14px}
 .nav{display:flex;gap:6px}.nav button{font:inherit;width:34px;height:34px;border-radius:8px;border:1px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer}
 .mt{display:grid;grid-template-columns:repeat(5,1fr);gap:0;border:1px solid var(--line);border-radius:10px;margin-bottom:18px}.mt>div{padding:14px 18px;border-right:1px solid var(--line)}.mt>div:last-child{border:0}
@@ -44,7 +45,6 @@ tbody tr.c{cursor:pointer}.tag{font:600 10px/1 Menlo,monospace;letter-spacing:.0
 .xl{display:flex;gap:18px;padding:6px 8px 0;font-size:11.5px;color:var(--muted)}.xl div{flex:1;text-align:center}
 .box{border:1px solid var(--line);border-radius:10px;padding:16px 18px}.box h3{font:600 13.5px/1.2 "Avenir Next",sans-serif;margin:0 0 2px}
 .foot{display:flex;justify-content:space-between;gap:24px;border-top:1px solid var(--line);padding-top:14px}.note{font-size:12px;color:var(--muted);max-width:980px}
-
 .hb .b,.cols .c span,[data-tip]{cursor:default}
 .tip{position:fixed;pointer-events:none;background:var(--ink);color:var(--surface);font-size:12px;line-height:1.45;padding:8px 10px;border-radius:6px;max-width:260px;z-index:10;box-shadow:0 4px 16px rgba(0,0,0,.2);display:none}
 .tip b{display:block;font-size:12.5px}
@@ -55,26 +55,47 @@ tbody tr.c{cursor:pointer}.tag{font:600 10px/1 Menlo,monospace;letter-spacing:.0
 .login{display:flex;gap:8px;justify-content:center;margin-top:14px}.login button,.dates button{font:inherit;font-size:13px;font-weight:600;border:0;border-radius:8px;padding:7px 14px;background:var(--sel-bg);color:var(--sel-fg);cursor:pointer}
 .busy{opacity:.55;transition:opacity .15s}
 .scroll{overflow-x:auto}
-button:focus-visible,select:focus-visible,input:focus-visible,tr.c:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
-@media (max-width:1100px){.tiles{grid-template-columns:repeat(3,1fr)}.two{grid-template-columns:1fr}.mt{grid-template-columns:repeat(2,1fr)}.mt>div{border-right:0;border-bottom:1px solid var(--line)}.top{flex-direction:column;align-items:flex-start}.card table{min-width:760px}.box table{min-width:520px}}
-@media (max-width:640px){.wrap{padding:20px 16px 32px}.tiles{grid-template-columns:repeat(2,1fr)}h1{font-size:30px}.hb{grid-template-columns:110px 1fr}.live{white-space:normal;border-radius:14px}}
+button:focus-visible,select:focus-visible,input:focus-visible,tr.c:focus-visible,a:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 .tiles>*,.two>*,.filters>*{min-width:0}.seg,.fg,.ch,.leg{flex-wrap:wrap}.ch{gap:4px 12px}.seg button{white-space:nowrap}body{overflow-x:hidden}
 .tag{white-space:nowrap}.tiles.k4{grid-template-columns:repeat(4,1fr)}.mt.k4{grid-template-columns:repeat(4,1fr)}.three{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.three>*{min-width:0}.obs{display:grid;grid-template-columns:22px 1fr;gap:12px;padding:16px 20px;font-size:13px;color:var(--ink2);border-left:3px solid var(--accent)}.obs b{color:var(--ink)}.obs .i{width:20px;height:20px;border-radius:50%;border:1.5px solid var(--ink2);font:700 12px/17px Menlo,monospace;text-align:center;color:var(--ink2)}.obs p{margin:0;max-width:1100px}.obs p+p{margin-top:6px}.kl{font:600 10.5px/1 Menlo,monospace;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin:4px 0 -10px}
-@media (max-width:1100px){.three{grid-template-columns:1fr}.tag{white-space:nowrap}.tiles.k4{grid-template-columns:repeat(2,1fr)}.mt.k4{grid-template-columns:repeat(2,1fr)}}
+/* criativos */
+.cr{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.cr.one{grid-template-columns:1fr}
+.cr .box{padding:14px 16px}.cr h3{display:flex;align-items:center;gap:8px}.cr .box .sub{margin-bottom:10px}
+.cl{display:grid;gap:10px}.cr.one .cl{grid-template-columns:repeat(2,1fr)}
+.ci{display:grid;grid-template-columns:72px 1fr;gap:12px;padding:10px;border:1px solid var(--line);border-radius:10px;align-items:start;position:relative}
+.ci.top{border-color:color-mix(in srgb,var(--accent) 55%,var(--line));background:color-mix(in srgb,var(--accent) 6%,var(--surface))}
+.ci .th{width:72px;height:72px;border-radius:8px;background:var(--track);object-fit:cover;display:block;border:1px solid var(--line)}
+.ci .th.ph{display:flex;align-items:center;justify-content:center;font:700 13px Menlo,monospace;color:var(--muted)}
+.ci .rk{position:absolute;left:6px;top:6px;width:20px;height:20px;border-radius:6px;background:var(--sel-bg);color:var(--sel-fg);font:700 11px/20px Menlo,monospace;text-align:center}
+.ci .nm{font-weight:700;font-size:13.5px;display:flex;gap:8px;align-items:center;flex-wrap:wrap}.ci .nm small{font-weight:500;color:var(--muted);font-size:11.5px}
+.ci .tt{font-size:12px;color:var(--ink2);margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ci .mx{display:flex;flex-wrap:wrap;gap:4px 12px;margin-top:8px;font-size:11.5px;color:var(--ink2)}
+.ci .mx b{display:block;color:var(--ink);font-variant-numeric:tabular-nums;font-size:13px}.ci .mx span{white-space:nowrap}
+.ci a{color:inherit}
+.tb{width:40px;height:40px;border-radius:6px;object-fit:cover;background:var(--track);border:1px solid var(--line);display:block;flex:none}
+@media (max-width:1100px){.tiles{grid-template-columns:repeat(3,1fr)}.two{grid-template-columns:1fr}.mt{grid-template-columns:repeat(2,1fr)}.mt>div{border-right:0;border-bottom:1px solid var(--line)}.top{flex-direction:column;align-items:flex-start}.card table{min-width:760px}.box table{min-width:520px}.three,.cr{grid-template-columns:1fr}.tiles.k4{grid-template-columns:repeat(2,1fr)}.mt.k4{grid-template-columns:repeat(2,1fr)}.cr.one .cl{grid-template-columns:1fr}}
+@media (max-width:640px){.wrap{padding:20px 16px 32px}.tiles{grid-template-columns:repeat(2,1fr)}h1{font-size:30px}.hb{grid-template-columns:110px 1fr}.live{white-space:normal;border-radius:14px}.ci .mx{grid-template-columns:repeat(3,auto)}}
 </style></head><body><div class="wrap" id="app"></div><div class="tip" id="tip"></div>
 <script>
 const $=s=>document.querySelector(s);
-const esc=s=>String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const ETAPA_OK=e=>["tof","mof","bof"].includes(e)?e:"todas";
 const guarda={get:k=>{try{return localStorage.getItem(k)}catch(e){return null}},set:(k,v)=>{try{localStorage.setItem(k,v)}catch(e){}}};
-const E={periodo:"inicio",since:"",until:"",camp:"todas",cidade:null,tema:guarda.get("tema")||"dark",D:null,erro:null,login:false,carregando:false,senha:(()=>{try{return sessionStorage.getItem("senha")||""}catch(e){return ""}})()};
+const Q=new URLSearchParams(location.search);
+const E={periodo:"inicio",since:"",until:"",etapa:ETAPA_OK(Q.get("etapa")),cidade:null,tema:Q.get("tema")==="light"?"light":guarda.get("tema")||"dark",D:null,erro:null,login:false,carregando:false,senha:(()=>{try{return sessionStorage.getItem("senha")||""}catch(e){return ""}})()};
 document.documentElement.dataset.theme=E.tema;
 const R=v=>"R$ "+v.toLocaleString("pt-BR",{minimumFractionDigits:2,maximumFractionDigits:2}),N=v=>Math.round(v).toLocaleString("pt-BR"),
 P=v=>v.toLocaleString("pt-BR",{minimumFractionDigits:2,maximumFractionDigits:2})+"%",P1=v=>v.toLocaleString("pt-BR",{minimumFractionDigits:1,maximumFractionDigits:1})+"%",
 dm=d=>d.slice(8)+"/"+d.slice(5,7);
-const soma=rs=>rs.reduce((a,r)=>(a.inv+=r.inv,a.imp+=r.imp,a.cli+=r.cli,a.leads+=r.leads,a.conv+=r.conv,a.invF+=r.tipo=="form"?r.inv:0,a.invW+=r.tipo=="whats"?r.inv:0,a),{inv:0,imp:0,cli:0,leads:0,conv:0,invF:0,invW:0});
-const res=s=>s.leads+s.conv,cpr=s=>res(s)?R(s.inv/res(s)):"—",ctr=s=>s.imp?P(s.cli/s.imp*100):"—",cpm=s=>s.imp?R(s.inv/s.imp*1000):"—";
-const TIPO={form:"Formulário",whats:"WhatsApp"},STATUS={ACTIVE:"Ativo",PAUSED:"Pausado",CAMPAIGN_PAUSED:"Campanha pausada",ADSET_PAUSED:"Pausado",IN_PROCESS:"Em análise",WITH_ISSUES:"Com problema"};
-const tipDe=(nome,w,f,fmt)=>esc(`<b>${nome}</b>WhatsApp: ${fmt(w)}<br>Formulário: ${fmt(f)}<br>Total: ${fmt(w+f)}`);
+const ETS=["tof","mof","bof"],NOME={tof:"Topo",mof:"Meio",bof:"Fundo"},RES={tof:"Visitas à LP",mof:"Visitas à LP",bof:"Leads de formulário"};
+const resDe=r=>r.etapa==="bof"?r.leads:r.lpv;
+// Soma de linhas: totais e, por etapa, investimento e resultado (visita à LP no topo/meio, lead no fundo).
+const soma=rs=>rs.reduce((a,r)=>{a.inv+=r.inv;a.imp+=r.imp;a.cli+=r.cli;a.lpv+=r.lpv;a.leads+=r.leads;a.thru+=r.thru||0;const p=a.por[r.etapa]||(a.por[r.etapa]={inv:0,res:0,imp:0});p.inv+=r.inv;p.res+=resDe(r);p.imp+=r.imp;return a},{inv:0,imp:0,cli:0,lpv:0,leads:0,thru:0,por:{tof:{inv:0,res:0,imp:0},mof:{inv:0,res:0,imp:0},bof:{inv:0,res:0,imp:0}}});
+const res=s=>E.etapa==="todas"?s.lpv+s.leads:s.por[E.etapa].res,custo=(inv,n)=>n?R(inv/n):"—",cpr=s=>custo(s.inv,res(s)),ctr=s=>s.imp?P(s.cli/s.imp*100):"—",cpm=s=>s.imp?R(s.inv/s.imp*1000):"—";
+const invLP=s=>s.por.tof.inv+s.por.mof.inv,cpv=s=>custo(invLP(s),s.lpv),cplf=s=>custo(s.por.bof.inv,s.leads);
+const STATUS={ACTIVE:"Ativo",PAUSED:"Pausado",CAMPAIGN_PAUSED:"Campanha pausada",ADSET_PAUSED:"Pausado",IN_PROCESS:"Em análise",WITH_ISSUES:"Com problema",PENDING_REVIEW:"Em análise",DISAPPROVED:"Reprovado"};
+const tipDe=(nome,vals,fmt)=>esc(`<b>${nome}</b>`+ETS.map((e,i)=>`${NOME[e]}: ${fmt(vals[i])}`).join("<br>")+`<br>Total: ${fmt(vals.reduce((a,b)=>a+b,0))}`);
+const etq=e=>`<span class="et" style="background:var(--${e})">${NOME[e]}</span>`;
 
 async function carregar(silencioso){
   E.carregando=true;if(!silencioso)render();
@@ -89,78 +110,112 @@ async function carregar(silencioso){
   E.carregando=false;render();
 }
 
+// Barras horizontais empilhadas por etapa (get devolve [topo, meio, fundo]).
 function barras(cids,get,fmt){
   const mx=Math.max(1e-9,...cids.map(x=>get(x.s).reduce((a,b)=>a+b,0)));
-  return `<div class="hb">`+cids.map(x=>{const[w,f]=get(x.s);return `<div class="n ${x.c===E.cidade?"on":""}">${esc(x.c)}</div><div class="b" data-tip="${tipDe(x.c,w,f,fmt)}">${w?`<span style="width:${w/mx*76}%;background:var(--whats)"></span>`:""}${f?`<span style="width:${f/mx*76}%;background:var(--form)"></span>`:""}<em>${fmt(w+f)}</em></div>`}).join("")+`</div>`;
+  return `<div class="hb">`+cids.map(x=>{const v=get(x.s);return `<div class="n ${x.c===E.cidade?"on":""}">${esc(x.c)}</div><div class="b" data-tip="${tipDe(x.c,v,fmt)}">${ETS.map((e,i)=>v[i]?`<span style="width:${v[i]/mx*76}%;background:var(--${e})"></span>`:"").join("")}<em>${fmt(v.reduce((a,b)=>a+b,0))}</em></div>`}).join("")+`</div>`;
 }
 function colunas(dias,get,fmt,hoje){
   const mx=Math.max(1e-9,...dias.map(d=>get(d.s).reduce((a,b)=>a+b,0))),muitos=dias.length>10,passo=Math.ceil(dias.length/10),gap=muitos?4:18,larg=muitos?"70%":"24px";
-  return `<div class="cols" style="gap:${gap}px">`+dias.map(d=>{const[w,f]=get(d.s);return `<div class="c" data-tip="${tipDe(dm(d.d),w,f,fmt)}">${muitos?"":`<b>${fmt(w+f)}</b>`}${f?`<span style="width:${larg};height:${f/mx*110}px;background:var(--form)"></span>`:""}${w?`<span style="width:${larg};height:${w/mx*110}px;background:var(--whats);${f?"border-radius:0":""}"></span>`:""}</div>`}).join("")+`</div><div class="xl" style="gap:${gap}px">`+dias.map((d,i)=>`<div>${i%passo?"":dm(d.d)+(d.d===hoje&&!muitos?" · hoje":"")}</div>`).join("")+`</div>`;
+  return `<div class="cols" style="gap:${gap}px">`+dias.map(d=>{const v=get(d.s),t=v.reduce((a,b)=>a+b,0);let primeiro=true;return `<div class="c" data-tip="${tipDe(dm(d.d),v,fmt)}">${muitos?"":`<b>${fmt(t)}</b>`}${ETS.map((e,i)=>{if(!v[i])return "";const r=primeiro?"":"border-radius:0";primeiro=false;return `<span style="width:${larg};height:${v[i]/mx*110}px;background:var(--${e});${r}"></span>`}).join("")}</div>`}).join("")+`</div><div class="xl" style="gap:${gap}px">`+dias.map((d,i)=>`<div>${i%passo?"":dm(d.d)+(d.d===hoje&&!muitos?" · hoje":"")}</div>`).join("")+`</div>`;
 }
 const seg=(nome,ops,atual)=>`<div class="seg" role="group">${ops.map(([k,t])=>`<button data-${nome}="${k}" class="${k===atual?"on":""}" aria-pressed="${k===atual}">${t}</button>`).join("")}</div>`;
 
 function render(){
   const D=E.D,app=$("#app");
   const hora=D?new Date(D.atualizado).toLocaleString("pt-BR",{day:"2-digit",month:"2-digit",hour:"2-digit",minute:"2-digit"}).replace(",", " às"):"";
-  const topo=`<div class="top"><div><div class="mono">Sales Check · Grupo Sinop · Meta Ads</div><h1>Savia · desempenho por cidade</h1></div>
+  const topo=`<div class="top"><div><div class="mono">Sales Check · Grupo Sinop · Meta Ads · OUT.CV.B3</div><h1>Savia · desempenho por cidade</h1></div>
   <div class="live"><span class="dot ${E.erro||!D?"off":""}"></span>${D?`<b>Ao vivo</b> atualizado ${hora} · renova a cada ${D.ttl_min} min`:"Carregando…"} <button id="atualizar">Atualizar</button></div></div>`;
   if(E.login){app.innerHTML=topo+`<div class="card msg"><b>Acesso restrito</b>Digite a senha do dashboard.${E.erro?`<div style="margin-top:8px">${esc(E.erro)}</div>`:""}<form class="login" id="login"><input type="password" id="senha" placeholder="Senha" autofocus aria-label="Senha"><button>Entrar</button></form></div>`;
     $("#login").onsubmit=e=>{e.preventDefault();E.senha=$("#senha").value;E.login=false;carregar()};$("#atualizar").onclick=()=>carregar();return}
   const filtros=`<div class="filters"><div class="fg"><span>Período</span>${seg("p",[["hoje","Hoje"],["ontem","Ontem"],["7d","7 dias"],["30d","30 dias"],["inicio","Desde "+(D?dm(D.inicio):"o início")],["custom","Personalizado"]],E.periodo)}
   ${E.periodo==="custom"?`<form class="dates" id="datas"><input type="date" id="d1" value="${E.since}" max="${D?D.hoje:""}" aria-label="De"><span>a</span><input type="date" id="d2" value="${E.until}" max="${D?D.hoje:""}" aria-label="Até"><button>Aplicar</button></form>`:""}</div>
-  <div class="fg"><span>Campanha</span>${seg("c",[["todas","Todas"],["form","Formulário"],["whats","WhatsApp"]],E.camp)}</div>
+  <div class="fg"><span>Etapa</span>${seg("e",[["todas","Todas"],["tof","Topo · CP07"],["mof","Meio · CP08"],["bof","Fundo · CP09"]],E.etapa)}</div>
   <div class="fg"><span>Tema</span>${seg("t",[["light","Claro"],["dark","Escuro"]],E.tema)}</div></div>`;
   let corpo;
   if(!D)corpo=`<div class="card msg">${E.erro?`<b>Não deu para carregar</b>${esc(E.erro)}`:"<b>Carregando dados da Meta…</b>A primeira leitura leva alguns segundos."}</div>`;
   else corpo=(E.erro?`<div class="card" style="padding:12px 18px;color:var(--ink2)">Última atualização falhou: ${esc(E.erro)} Mostrando a leitura anterior.</div>`:"")+painel(D);
   app.innerHTML=topo+filtros+`<div id="corpo" class="${E.carregando&&D?"busy":""}" style="display:flex;flex-direction:column;gap:22px">${corpo}</div>
-  <div class="foot"><div class="note">Fontes: Meta Marketing API (conta Gran - Produtos, campanhas SAV_CP01 formulário e SAV_CP02 WhatsApp) e Kommo (funil de qualificação, fonte Meta Ads, empreendimento Savia). Resultado = lead de formulário ou conversa iniciada no WhatsApp. Qualificado = lead ganho no funil de qualificação. Os totais somam só os conjuntos por cidade; os conjuntos amplos aparecem como referência.</div><div class="mono">Savia · cidades · Sales Check</div></div>`;
+  <div class="foot"><div class="note">Fontes: Meta Marketing API (conta Gran - Produtos, campanhas SAV_CP07 topo, SAV_CP08 meio e SAV_CP09 fundo da estrutura OUT.CV.B3) e Kommo (funil de qualificação, fonte Meta Ads, empreendimento Savia). Resultado = visita à página do Savia (topo e meio) ou lead de formulário (fundo). Qualificado = lead ganho no funil de qualificação. Os totais somam só os conjuntos por cidade; os conjuntos amplos e de remarketing em várias cidades aparecem como referência. Ranking de criativos: menor custo por resultado; sem resultado, maior CTR.</div><div class="mono">Savia · cidades · Sales Check</div></div>`;
   ligar();
 }
 
+// Ranking de criativos: quem tem resultado vai na frente, do menor custo ao maior; sem resultado, por CTR.
+function ranquear(lista){
+  return lista.sort((a,b)=>{const ra=res(a.s),rb=res(b.s);if(ra&&rb)return a.s.inv/ra-b.s.inv/rb||b.s.inv-a.s.inv;if(ra!==rb)return rb-ra;
+    const ca=a.s.imp?a.s.cli/a.s.imp:0,cb=b.s.imp?b.s.cli/b.s.imp:0;return cb-ca||b.s.inv-a.s.inv});
+}
+function miniatura(f,cls){
+  if(!f)return `<div class="${cls} ph">AD</div>`;
+  const img=f.thumb||f.img;
+  const el=img?`<img class="${cls}" src="${esc(img)}" alt="" loading="lazy" onerror="this.outerHTML='<div class=&quot;${cls} ph&quot;>${esc(f.codigo)}</div>'">`:`<div class="${cls} ph">${esc(f.codigo)}</div>`;
+  return f.img?`<a href="${esc(f.img)}" target="_blank" rel="noopener" title="Abrir a arte">${el}</a>`:el;
+}
+function criativos(an,CR,todas){
+  // Agrupa por nome de anúncio (mesmo criativo em várias cidades) e ranqueia por etapa.
+  const g=new Map();
+  for(const r of an){const a=g.get(r.anuncio)||{nome:r.anuncio,etapa:r.etapa,rows:[],cid:new Set()};a.rows.push(r);a.cid.add(r.cidade);g.set(r.anuncio,a)}
+  const itens=[...g.values()].map(a=>({...a,s:soma(a.rows),f:CR[a.nome]}));
+  const lista=e=>ranquear(itens.filter(i=>i.etapa===e));
+  const item=(i,n)=>{const f=i.f||{codigo:i.nome.replace(/^.*?(AD\d+).*$/,"$1"),copy:"",formato:"",titulo:"",ativos:0},r=res(i.s);return `<div class="ci ${n===1&&r?"top":""}"><span class="rk">${n}</span>${miniatura(i.f,"th")}<div><div class="nm">${esc(f.codigo)}${f.copy?` <small>copy ${esc(f.copy)}</small>`:""}${n===1&&r?`<span class="chip">melhor custo</span>`:""}</div>
+    <div class="tt" title="${esc(i.nome)}">${esc(f.formato||"")}${f.formato?" · ":""}${f.titulo?esc(f.titulo):esc(i.nome)}</div>
+    <div class="mx"><span>Investido<b>${R(i.s.inv)}</b></span><span>Impr.<b>${N(i.s.imp)}</b></span><span>CTR<b>${ctr(i.s)}</b></span><span>${RES[i.etapa]}<b>${N(r)}</b></span><span>Custo<b>${cpr(i.s)}</b></span>${i.s.thru?`<span>ThruPlay<b>${N(i.s.thru)}</b></span>`:""}</div>
+    <div class="tt">${i.cid.size} ${i.cid.size===1?"cidade":"cidades"} · ${N(f.ativos||0)} ${f.ativos===1?"anúncio ativo":"anúncios ativos"}</div></div></div>`};
+  const bloco=e=>{const l=lista(e);return `<div class="box"><h3>${etq(e)} ${NOME[e]}</h3><div class="sub">${RES[e]} · ${l.length} ${l.length===1?"criativo":"criativos"} com entrega</div><div class="cl">${l.length?l.map((i,n)=>item(i,n+1)).join(""):`<div style="color:var(--muted);font-size:12.5px">Sem entrega no período.</div>`}</div></div>`};
+  return `<div class="card"><div class="ch"><h2>Criativos com melhor performance</h2><span class="sub" style="margin:0">Mesmo criativo somado em todas as cidades onde roda</span></div><div class="sub">Ordem: menor custo por resultado da etapa; sem resultado ainda, maior CTR. Clique na arte para abrir em tamanho maior.</div>
+  <div class="cr ${todas?"":"one"}">${(todas?ETS:[E.etapa]).map(bloco).join("")}</div></div>`;
+}
+
 function painel(D){
-  const f=r=>E.camp==="todas"||r.tipo===E.camp;
-  const cj=D.conjuntos.filter(f),di=D.diario.filter(f),an=D.anuncios.filter(f);
+  const f=r=>E.etapa==="todas"||r.etapa===E.etapa,todas=E.etapa==="todas";
+  const cj=D.conjuntos.filter(f),di=D.diario.filter(f),an=D.anuncios.filter(f),CR=D.criativos||{};
   const cids=[...new Set(cj.map(r=>r.cidade))].filter(c=>c!==D.amplo).map(c=>({c,s:soma(cj.filter(r=>r.cidade===c))})).sort((a,b)=>b.s.inv-a.s.inv||a.c.localeCompare(b.c));
-  if(!cids.length)return `<div class="card msg"><b>Nenhum conjunto por cidade neste filtro</b>Troque a campanha ou o período.</div>`;
+  if(!cids.length)return `<div class="card msg"><b>Nenhum conjunto por cidade neste filtro</b>Troque a etapa ou o período.</div>`;
   if(!cids.some(c=>c.c===E.cidade))E.cidade=cids[0].c;
   const tot=soma(cj.filter(r=>r.cidade!==D.amplo)),amp=cj.filter(r=>r.cidade===D.amplo),nSets=cj.filter(r=>r.cidade!==D.amplo).length;
-  const x=cids.find(c=>c.c===E.cidade),sets=cj.filter(r=>r.cidade===E.cidade),cad=an.filter(r=>r.cidade===E.cidade).sort((a,b)=>b.inv-a.inv);
+  const x=cids.find(c=>c.c===E.cidade),sets=cj.filter(r=>r.cidade===E.cidade).sort((a,b)=>ETS.indexOf(a.etapa)-ETS.indexOf(b.etapa)||b.inv-a.inv);
+  const cad=ranquear(an.filter(r=>r.cidade===E.cidade).map(r=>({r,s:soma([r])})));
   const dias=D.dias.map(d=>({d,s:soma(di.filter(r=>r.cidade===E.cidade&&r.dia===d))}));
   const K=D.kommo||{ok:false,linhas:[],sem:0},kl=K.linhas.filter(f),ks=rs=>rs.reduce((a,r)=>(a.l+=r.leads,a.q+=r.qual,a),{l:0,q:0});
   const kc=c=>ks(kl.filter(r=>r.cidade===c)),ktot=ks(kl.filter(r=>r.cidade!==D.amplo)),kamp=kc(D.amplo),kx=kc(E.cidade);
   const kn=v=>K.ok?N(v):"—",taxa=k=>K.ok&&k.l?P1(k.q/k.l*100):"—",cpq=(s,k)=>K.ok&&k.q?R(s.inv/k.q):"—",cpl=(s,k)=>K.ok&&k.l?R(s.inv/k.l):"—";
   const kcj=n=>ks(kl.filter(r=>r.conjunto.replace(/\s+/g,"").toUpperCase()===n.replace(/\s+/g,"").toUpperCase()));
-  const kdias=D.dias.map(d=>{const a=kl.filter(r=>r.cidade===E.cidade&&r.dia===d);return{d,s:{w:a.filter(r=>r.tipo==="whats").reduce((t,r)=>t+r.leads,0),f:a.filter(r=>r.tipo==="form").reduce((t,r)=>t+r.leads,0)}}});
-  const leg=E.camp==="todas"?`<div class="leg"><span><i style="background:var(--whats)"></i>WhatsApp (CP02)</span><span><i style="background:var(--form)"></i>Formulário (CP01)</span></div>`:"";
+  const kdias=D.dias.map(d=>{const a=kl.filter(r=>r.cidade===E.cidade&&r.dia===d);return{d,s:ETS.map(e=>a.filter(r=>r.etapa===e).reduce((t,r)=>t+r.leads,0))}});
+  const leg=todas?`<div class="leg">${ETS.map(e=>`<span><i style="background:var(--${e})"></i>${NOME[e]} · ${RES[e]}</span>`).join("")}</div>`:"";
+  const porE=s=>ETS.map(e=>s.por[e].inv),porR=s=>ETS.map(e=>s.por[e].res);
   const pct=s=>tot.inv?P1(s.inv/tot.inv*100):"—";
-  const linha=(n,s,cls,extra,p,k)=>`<tr class="${cls}" ${cls.startsWith("c")?`data-cid="${esc(n)}" tabindex="0"`:""}><td>${esc(n)}${extra||""}</td><td class="r">${R(s.inv)}</td><td class="r">${p}</td><td class="r">${N(s.imp)}</td><td class="r">${ctr(s)}</td><td class="r">${cpm(s)}</td><td class="r">${N(s.leads)}</td><td class="r">${N(s.conv)}</td><td class="r">${cpr(s)}</td><td class="r">${kn(k.l)}</td><td class="r">${kn(k.q)}</td><td class="r">${cpq(s,k)}</td></tr>`;
-  const sub=s=>E.camp==="form"?`${N(s.leads)} leads de formulário`:E.camp==="whats"?`${N(s.conv)} conversas no WhatsApp`:`${N(s.conv)} conversas · ${N(s.leads)} leads de formulário`;
+  const tile=t=>`<div class="card tile"><div class="l">${t[0]}</div><div class="v">${t[1]}</div><div class="s">${t[2]}</div></div>`;
+  const tiles=todas?[["Investido",R(tot.inv),`${cids.length} cidades · ${nSets} conjuntos`],["Visitas à LP",N(tot.lpv),`topo e meio · ${R(invLP(tot)).replace("R$ ","R$ ")} investidos`],["Custo por visita",cpv(tot),"investido no topo e meio ÷ visitas"],["Leads de formulário",N(tot.leads),`fundo · ${R(tot.por.bof.inv)} investidos`],["Custo por lead",cplf(tot),"investido no fundo ÷ leads"],["CTR de link",ctr(tot),`${N(tot.cli)} cliques · ${N(tot.imp)} impressões · CPM ${cpm(tot)}`]]
+    :[["Investido",R(tot.inv),`${cids.length} cidades · ${nSets} conjuntos`],[RES[E.etapa],N(res(tot)),E.etapa==="bof"?"leads do formulário nativo":"visitas à página do Savia"],["Custo por resultado",cpr(tot),"investido ÷ resultados"],["Impressões",N(tot.imp),`${N(tot.cli)} cliques no link`],["CTR de link",ctr(tot),"cliques ÷ impressões"],["CPM",cpm(tot),"custo por mil impressões"]];
+  const linha=(n,s,cls,extra,p,k)=>`<tr class="${cls}" ${cls.startsWith("c")?`data-cid="${esc(n)}" tabindex="0"`:""}><td>${esc(n)}${extra||""}</td><td class="r">${R(s.inv)}</td><td class="r">${p}</td><td class="r">${N(s.imp)}</td><td class="r">${ctr(s)}</td><td class="r">${cpm(s)}</td><td class="r">${N(s.lpv)}</td><td class="r">${cpv(s)}</td><td class="r">${N(s.leads)}</td><td class="r">${cplf(s)}</td><td class="r">${kn(k.l)}</td><td class="r">${kn(k.q)}</td><td class="r">${cpq(s,k)}</td></tr>`;
+  const resumo=s=>todas?`${N(s.lpv)} visitas · ${N(s.leads)} leads`:`${N(res(s))} ${E.etapa==="bof"?"leads":"visitas"}`;
   return `
-<div class="tiles">${[["Investido",R(tot.inv),`${cids.length} cidades · ${nSets} conjuntos`],["Resultados",N(res(tot)),sub(tot)],["Custo por resultado",cpr(tot),"investido ÷ resultados"],["Impressões",N(tot.imp),`${N(tot.cli)} cliques no link`],["CTR de link",ctr(tot),"cliques ÷ impressões"],["CPM",cpm(tot),"custo por mil impressões"]].map(t=>`<div class="card tile"><div class="l">${t[0]}</div><div class="v">${t[1]}</div><div class="s">${t[2]}</div></div>`).join("")}</div>
+<div class="tiles">${tiles.map(tile).join("")}</div>
 <div class="kl">CRM · Kommo</div>
-<div class="tiles k4">${[["Leads no Kommo",kn(ktot.l),K.ok?`${N(kamp.l)} nos conjuntos amplos${E.camp==="todas"?` · ${N(K.sem)} sem conjunto identificado`:""}`:esc(K.erro||"Kommo indisponível")],["Qualificados",kn(ktot.q),K.ok?`${N(kamp.q)} nos conjuntos amplos`:"—"],["Taxa de qualificação",taxa(ktot),"qualificados ÷ leads no Kommo"],["Custo por lead no Kommo",cpl(tot,ktot),"custo por qualificado "+cpq(tot,ktot)]].map(t=>`<div class="card tile"><div class="l">${t[0]}</div><div class="v">${t[1]}</div><div class="s">${t[2]}</div></div>`).join("")}</div>
-<div class="card obs"><div class="i">i</div><div><p><b>Por que os números da Meta e do Kommo não batem.</b> A Meta leva de 24 a 72 horas para consolidar os dados, principalmente as conversas de WhatsApp. Por isso, nos dias mais recentes, o Kommo pode mostrar mais leads do que a Meta mostra de resultados, e o investimento e os resultados da Meta ainda sobem depois.</p><p>O Kommo conta o lead no dia em que o card entra no funil de qualificação e liga cada lead à cidade pelo conjunto de anúncios gravado no rastreio. Lead sem conjunto identificado fica fora da divisão por cidade. Os qualificados também crescem com o tempo, porque os leads recentes ainda estão em atendimento.</p></div></div>
-<div class="two"><div class="card"><div class="ch"><h2>Investimento por cidade</h2>${leg}</div><div class="sub">Ordenado pelo maior investimento no período</div>${barras(cids,s=>[s.invW,s.invF],R)}</div>
-<div class="card"><div class="ch"><h2>Resultados por cidade</h2>${leg}</div><div class="sub">Conversas iniciadas no WhatsApp + leads de formulário, na mesma ordem</div>${barras(cids,s=>[s.conv,s.leads],N)}</div></div>
+<div class="tiles k4">${[["Leads no Kommo",kn(ktot.l),K.ok?`${N(kamp.l)} nos conjuntos amplos${todas?` · ${N(K.sem)} sem conjunto identificado`:""}`:esc(K.erro||"Kommo indisponível")],["Qualificados",kn(ktot.q),K.ok?`${N(kamp.q)} nos conjuntos amplos`:"—"],["Taxa de qualificação",taxa(ktot),"qualificados ÷ leads no Kommo"],["Custo por lead no Kommo",cpl(tot,ktot),"custo por qualificado "+cpq(tot,ktot)]].map(tile).join("")}</div>
+<div class="card obs"><div class="i">i</div><div><p><b>Como ler.</b> A estrutura OUT.CV.B3 tem três etapas: topo (CP07) e meio (CP08) levam para a página do Savia e o resultado é a visita; fundo (CP09) usa formulário nativo e o resultado é o lead. A Meta leva de 24 a 72 horas para consolidar os dados, então investimento e resultados dos dias mais recentes ainda sobem.</p><p>O Kommo conta o lead no dia em que o card entra no funil de qualificação e liga cada lead à cidade pelo conjunto de anúncios gravado no rastreio. Lead sem conjunto identificado fica fora da divisão por cidade. Os qualificados também crescem com o tempo, porque os leads recentes ainda estão em atendimento.</p></div></div>
+${criativos(an,CR,todas)}
+<div class="two"><div class="card"><div class="ch"><h2>Investimento por cidade</h2>${leg}</div><div class="sub">Ordenado pelo maior investimento no período</div>${barras(cids,porE,R)}</div>
+<div class="card"><div class="ch"><h2>Resultados por cidade</h2>${leg}</div><div class="sub">Visitas à LP (topo e meio) e leads de formulário (fundo), na mesma ordem</div>${barras(cids,porR,N)}</div></div>
 <div class="card"><div class="ch"><h2>Todas as cidades</h2><span class="sub" style="margin:0">Clique numa linha para abrir o detalhe</span></div>
-<div class="scroll"><table><thead><tr><th>Cidade</th><th class="r">Investido</th><th class="r">% da verba</th><th class="r">Impressões</th><th class="r">CTR</th><th class="r">CPM</th><th class="r">Leads form.</th><th class="r">Conversas</th><th class="r">Custo / result.</th><th class="r">Leads Kommo</th><th class="r">Qualif.</th><th class="r">Custo / qualif.</th></tr></thead>
+<div class="scroll"><table><thead><tr><th>Cidade</th><th class="r">Investido</th><th class="r">% da verba</th><th class="r">Impressões</th><th class="r">CTR</th><th class="r">CPM</th><th class="r">Visitas LP</th><th class="r">Custo / visita</th><th class="r">Leads form.</th><th class="r">Custo / lead</th><th class="r">Leads Kommo</th><th class="r">Qualif.</th><th class="r">Custo / qualif.</th></tr></thead>
 <tbody>${cids.map(c=>linha(c.c,c.s,"c"+(c.c===E.cidade?" on":""),"",pct(c.s),kc(c.c))).join("")}${amp.length?linha(D.amplo,soma(amp),"ref",'<span class="tag">conjuntos amplos · referência</span>',"—",kamp):""}</tbody></table></div></div>
 <div class="card" id="detalhe"><div class="dh"><div class="lft"><div><div class="mono" style="margin-bottom:8px">Detalhe da cidade</div><select class="sel" id="sel" aria-label="Cidade">${cids.map(c=>`<option ${c.c===E.cidade?"selected":""}>${esc(c.c)}</option>`).join("")}</select></div></div><div class="nav"><button id="pv" aria-label="Cidade anterior">‹</button><button id="nx" aria-label="Próxima cidade">›</button></div></div>
-<div class="mt">${[["Investido",R(x.s.inv),pct(x.s)+" da verba das cidades"],["Resultados",N(res(x.s)),sub(x.s)],["Custo por resultado",cpr(x.s),"média das cidades "+cpr(tot)],["CTR de link",ctr(x.s),"média das cidades "+ctr(tot)],["CPM",cpm(x.s),"média das cidades "+cpm(tot)]].map(t=>`<div><div class="l">${t[0]}</div><div class="v">${t[1]}</div><div class="s">${t[2]}</div></div>`).join("")}</div>
+<div class="mt">${(todas?[["Investido",R(x.s.inv),pct(x.s)+" da verba das cidades"],["Visitas à LP",N(x.s.lpv),"custo por visita "+cpv(x.s)+" · média "+cpv(tot)],["Leads de formulário",N(x.s.leads),"custo por lead "+cplf(x.s)+" · média "+cplf(tot)],["CTR de link",ctr(x.s),"média das cidades "+ctr(tot)],["CPM",cpm(x.s),"média das cidades "+cpm(tot)]]
+  :[["Investido",R(x.s.inv),pct(x.s)+" da verba das cidades"],[RES[E.etapa],N(res(x.s)),resumo(x.s)],["Custo por resultado",cpr(x.s),"média das cidades "+cpr(tot)],["CTR de link",ctr(x.s),"média das cidades "+ctr(tot)],["CPM",cpm(x.s),"média das cidades "+cpm(tot)]]).map(t=>`<div><div class="l">${t[0]}</div><div class="v">${t[1]}</div><div class="s">${t[2]}</div></div>`).join("")}</div>
 <div class="mt k4">${[["Leads no Kommo",kn(kx.l),"de "+kn(ktot.l)+" nas cidades"],["Qualificados",kn(kx.q),"de "+kn(ktot.q)+" nas cidades"],["Taxa de qualificação",taxa(kx),"média das cidades "+taxa(ktot)],["Custo por lead no Kommo",cpl(x.s,kx),"média das cidades "+cpl(tot,ktot)]].map(t=>`<div><div class="l">${t[0]}</div><div class="v">${t[1]}</div><div class="s">${t[2]}</div></div>`).join("")}</div>
-<div class="three" style="margin-bottom:18px"><div class="box"><div class="ch"><h3>Investimento por dia</h3></div><div class="sub">R$ por dia nos conjuntos da cidade</div>${colunas(dias,s=>[s.invW,s.invF],v=>R(v).replace("R$ ",""),D.hoje)}</div>
-<div class="box"><div class="ch"><h3>Resultados na Meta por dia</h3></div><div class="sub">Conversas + leads de formulário</div>${colunas(dias,s=>[s.conv,s.leads],N,D.hoje)}</div>
-<div class="box"><div class="ch"><h3>Leads no Kommo por dia</h3></div><div class="sub">${K.ok?"Cards criados no funil de qualificação":esc(K.erro||"Kommo indisponível")}</div>${colunas(kdias,s=>[s.w,s.f],N,D.hoje)}</div></div>${leg?`<div style="margin:-6px 0 18px">${leg}</div>`:""}
-<div class="two"><div class="box"><h3>Conjuntos</h3><div class="sub">Alcance e frequência valem por conjunto, não somam entre eles</div><div class="scroll"><table><thead><tr><th>Conjunto</th><th class="r">Investido</th><th class="r">Alcance</th><th class="r">Freq.</th><th class="r">Result.</th><th class="r">Custo</th><th class="r">Kommo</th><th class="r">Qualif.</th></tr></thead><tbody>${sets.map(r=>{const s=soma([r]),k=kcj(r.conjunto);return `<tr><td><span class="k" style="background:var(--${r.tipo})"></span>${TIPO[r.tipo]} <span class="${r.status==="ACTIVE"?"chip":"tag"}">${STATUS[r.status]||esc(r.status)}</span><div style="font-size:11px;color:var(--muted);margin-top:3px;word-break:break-all">${esc(r.conjunto)}</div></td><td class="r">${R(r.inv)}</td><td class="r">${N(r.alc)}</td><td class="r">${r.freq?r.freq.toLocaleString("pt-BR",{minimumFractionDigits:2,maximumFractionDigits:2}):"—"}</td><td class="r">${N(res(s))}</td><td class="r">${cpr(s)}</td><td class="r">${kn(k.l)}</td><td class="r">${kn(k.q)}</td></tr>`}).join("")}</tbody></table></div></div>
-<div class="box"><h3>Anúncios</h3><div class="sub">Criativos com entrega nesta cidade, do maior investimento ao menor</div><div class="scroll"><table><thead><tr><th>Anúncio</th><th class="r">Investido</th><th class="r">Impr.</th><th class="r">CTR</th><th class="r">Result.</th><th class="r">Custo</th></tr></thead><tbody>${cad.length?cad.map(r=>{const s=soma([r]);return `<tr><td><div style="display:flex;gap:2px;align-items:baseline" title="${TIPO[r.tipo]}"><span class="k" style="background:var(--${r.tipo});flex:none"></span><span style="word-break:break-word">${esc(r.anuncio)}</span></div></td><td class="r">${R(r.inv)}</td><td class="r">${N(r.imp)}</td><td class="r">${ctr(s)}</td><td class="r">${N(res(s))}</td><td class="r">${cpr(s)}</td></tr>`}).join(""):`<tr><td colspan="6" style="color:var(--muted)">Sem entrega no período.</td></tr>`}</tbody></table></div></div></div></div>`;
+<div class="three" style="margin-bottom:18px"><div class="box"><div class="ch"><h3>Investimento por dia</h3></div><div class="sub">R$ por dia nos conjuntos da cidade</div>${colunas(dias,s=>porE(s),v=>R(v).replace("R$ ",""),D.hoje)}</div>
+<div class="box"><div class="ch"><h3>Resultados na Meta por dia</h3></div><div class="sub">Visitas à LP + leads de formulário</div>${colunas(dias,s=>porR(s),N,D.hoje)}</div>
+<div class="box"><div class="ch"><h3>Leads no Kommo por dia</h3></div><div class="sub">${K.ok?"Cards criados no funil de qualificação":esc(K.erro||"Kommo indisponível")}</div>${colunas(kdias,s=>s,N,D.hoje)}</div></div>${leg?`<div style="margin:-6px 0 18px">${leg}</div>`:""}
+<div class="two"><div class="box"><h3>Conjuntos</h3><div class="sub">Alcance e frequência valem por conjunto, não somam entre eles</div><div class="scroll"><table><thead><tr><th>Conjunto</th><th class="r">Investido</th><th class="r">Alcance</th><th class="r">Freq.</th><th class="r">Result.</th><th class="r">Custo</th><th class="r">Kommo</th><th class="r">Qualif.</th></tr></thead><tbody>${sets.map(r=>{const s=soma([r]),k=kcj(r.conjunto);return `<tr><td>${etq(r.etapa)} <span style="font-size:12px;color:var(--ink2)">${esc(r.segmento)}</span> <span class="${r.status==="ACTIVE"?"chip":"tag"}">${STATUS[r.status]||esc(r.status)}</span><div style="font-size:11px;color:var(--muted);margin-top:3px;word-break:break-all">${esc(r.conjunto)}</div></td><td class="r">${R(r.inv)}</td><td class="r">${N(r.alc)}</td><td class="r">${r.freq?r.freq.toLocaleString("pt-BR",{minimumFractionDigits:2,maximumFractionDigits:2}):"—"}</td><td class="r">${N(resDe(r))}</td><td class="r">${custo(r.inv,resDe(r))}</td><td class="r">${kn(k.l)}</td><td class="r">${kn(k.q)}</td></tr>`}).join("")}</tbody></table></div></div>
+<div class="box"><h3>Anúncios</h3><div class="sub">Criativos com entrega nesta cidade, do melhor custo por resultado ao pior</div><div class="scroll"><table><thead><tr><th>Anúncio</th><th class="r">Investido</th><th class="r">Impr.</th><th class="r">CTR</th><th class="r">Result.</th><th class="r">Custo</th></tr></thead><tbody>${cad.length?cad.map(({r,s})=>{const fc=CR[r.anuncio];return `<tr><td><div style="display:flex;gap:10px;align-items:center">${miniatura(fc,"tb")}<div><div>${etq(r.etapa)} <b>${esc(fc?fc.codigo:r.anuncio)}</b>${fc&&fc.copy?` <span style="color:var(--muted);font-size:12px">copy ${esc(fc.copy)}</span>`:""}</div><div style="font-size:11px;color:var(--muted);word-break:break-all">${esc(r.anuncio)}</div></div></div></td><td class="r">${R(r.inv)}</td><td class="r">${N(r.imp)}</td><td class="r">${ctr(s)}</td><td class="r">${N(resDe(r))}</td><td class="r">${custo(r.inv,resDe(r))}</td></tr>`}).join(""):`<tr><td colspan="6" style="color:var(--muted)">Sem entrega no período.</td></tr>`}</tbody></table></div></div></div></div>`;
 }
 
 function ligar(){
   const D=E.D;
   $("#atualizar").onclick=()=>carregar();
   document.querySelectorAll("[data-p]").forEach(b=>b.onclick=()=>{E.periodo=b.dataset.p;if(E.periodo==="custom"){if(!E.since&&D){E.since=D.periodo.since;E.until=D.periodo.until}render()}else carregar()});
-  document.querySelectorAll("[data-c]").forEach(b=>b.onclick=()=>{E.camp=b.dataset.c;render()});
+  document.querySelectorAll("[data-e]").forEach(b=>b.onclick=()=>{E.etapa=b.dataset.e;render()});
   document.querySelectorAll("[data-t]").forEach(b=>b.onclick=()=>{E.tema=b.dataset.t;document.documentElement.dataset.theme=E.tema;guarda.set("tema",E.tema);render()});
   const fd=$("#datas");if(fd)fd.onsubmit=e=>{e.preventDefault();E.since=$("#d1").value;E.until=$("#d2").value;if(E.since&&E.until)carregar()};
   const ir=c=>{E.cidade=c;render()};
